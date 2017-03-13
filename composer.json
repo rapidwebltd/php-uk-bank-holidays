@@ -1,0 +1,20 @@
+{
+    "name": "rapidwebltd/php-uk-bank-holidays",
+    "description": "php uk bank holidays is a simple tool that allows you to retrive uk bank holidays in a easy to read format.",
+    "license": "LGPL3",
+    "keywords": [
+        "bank holidays",
+        "uk bank holidays",
+        "library",
+        "PHP library",
+        "PHP uk bank holidays library"
+      ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "RapidWeb\\UkBankHolidays\\": "./src/"
+        }
+    }
+}
