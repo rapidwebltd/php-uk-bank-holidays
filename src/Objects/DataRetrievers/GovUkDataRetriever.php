@@ -2,22 +2,41 @@
 namespace RapidWeb\UkBankHolidays\Objects\DataRetrievers;
 
 use RapidWeb\UkBankHolidays\Objects\UkBankHoliday;
+use RapidWeb\UkBankHolidays\Objects\CacheDrivers\RWFileCacheDriver;
 use Exception;
 
 class GovUkDataRetriever
 {
+
+  private $cache = null;
+  private $cacheKey = 'GovUkBankHolidays';
+  private $cacheExpiry = '+1 month';
+
+  private function setupCache()
+  {
+      $this->cache = new RWFileCacheDriver;
+  }
+
   private function retrieve($location)
   {
-    $retrievedData = file_get_contents("https://www.gov.uk/bank-holidays.json");
+    $this->setupCache();
+      
+    if (!($data = $this->cache->get($this->cacheKey))) {
 
-    if (!$retrievedData) {
-        throw new Exception('Unable to retrieve JSON data.');
-    }
+        $retrievedData = file_get_contents("https://www.gov.uk/bank-holidays.json");
 
-    $data = json_decode($retrievedData,true);
+        if (!$retrievedData) {
+            throw new Exception('Unable to retrieve JSON data.');
+        }
 
-    if (!$data) {
-        throw new Exception('Unable to decode JSON data.');
+        $data = json_decode($retrievedData,true);
+
+        if (!$data) {
+            throw new Exception('Unable to decode JSON data.');
+        }
+
+        $this->cache->set($this->cacheKey, $data, strtotime($this->cacheExpiry));
+
     }
 
     if (!isset($data[$location]) || !isset($data[$location]['events'])) {

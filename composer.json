@@ -10,7 +10,8 @@
         "PHP uk bank holidays library"
       ],
     "require": {
-        "php": ">=5.3"
+        "php": ">=5.3",
+        "rapidwebltd/rw-file-cache": "^1.0"
     },
     "autoload": {
         "psr-4": {
