@@ -8,7 +8,7 @@ abstract class UkBankHolidayFactory
 {
     private static $dataRetriver;
 
-    private function setUpDataRetriever()
+    private static function setUpDataRetriever()
     {
      self::$dataRetriver  = new GovUkDataRetriever();
     }
