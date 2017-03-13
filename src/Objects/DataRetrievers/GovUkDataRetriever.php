@@ -3,6 +3,7 @@ namespace RapidWeb\UkBankHolidays\Objects\DataRetrievers;
 
 use RapidWeb\UkBankHolidays\Objects\UkBankHoliday;
 use RapidWeb\UkBankHolidays\Objects\CacheDrivers\RWFileCacheDriver;
+use RapidWeb\UkBankHolidays\Objects\CacheDrivers\LaravelCacheDriver;
 use Exception;
 
 class GovUkDataRetriever
@@ -14,7 +15,11 @@ class GovUkDataRetriever
 
   private function setupCache()
   {
+    if (class_exists('Illuminate\Support\Facades\Cache')) {
+        $this->cache = new LaravelCacheDriver;
+    } else {
       $this->cache = new RWFileCacheDriver;
+    }
   }
 
   private function retrieve($location)
