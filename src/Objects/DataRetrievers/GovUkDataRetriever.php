@@ -51,7 +51,7 @@ class GovUkDataRetriever
     $bankHolidayDates = array();
 
     foreach($data[$location]['events'] as $holidayDate){
-           $bankHolidayDate = new UkBankHoliday($holidayDate['title'],$holidayDate['date'],$holidayDate['notes'],$holidayDate['bunting']);
+           $bankHolidayDate = new UkBankHoliday($holidayDate['title'],$holidayDate['date'],$holidayDate['notes']);
            $bankHolidayDates[] = $bankHolidayDate;
     }
 
