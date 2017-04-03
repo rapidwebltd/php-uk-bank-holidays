@@ -1,4 +1,4 @@
-<?
+<?php
 namespace RapidWeb\UkBankHolidays\Objects\DataRetrievers;
 
 use RapidWeb\UkBankHolidays\Objects\UkBankHoliday;
