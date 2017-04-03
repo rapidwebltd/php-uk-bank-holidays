@@ -1,4 +1,4 @@
-<?
+<?php
 namespace RapidWeb\UkBankHolidays\Factories;
 
 use exception;
