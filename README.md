@@ -1,6 +1,6 @@
 # PHP UK Bank Holidays
 
-This library lets developers to easily retrieve UK bank holiday details. Holidays can be retrieved for 
+This library lets developers easily retrieve UK bank holiday details. Holidays can be retrieved for 
 England & Wales, Scotland, and Northern Ireland. Information about these holidays can optionally be
 restricted by month or date.
 
@@ -62,7 +62,7 @@ $allHolidays = array_merge($englandWalesHolidays, $scotlandHolidays, $northernIr
 
 ### Date-based restrictions
 
-You can use this library to retrieve, all holidays, or alternatively, holidays restricted by month or date.
+You can use this library to retrieve all holidays or alternatively holidays restricted by month or date.
 This is easily done using the `getAll`, `getByMonth` and `getByDate` methods respectively.
 
 See the following examples.
