@@ -1,6 +1,6 @@
 {
     "name": "rapidwebltd/php-uk-bank-holidays",
-    "description": "php uk bank holidays is a simple tool that allows you to retrive uk bank holidays in a easy to read format.",
+    "description": "This library enables developers to easily retrieve UK Bank Holiday details. Holidays can be retrieved for England & Wales, Scotland, and Northern Ireland. Information about these holidays can optionally be restricted by month or date.",
     "license": "LGPL3",
     "keywords": [
         "bank holidays",
