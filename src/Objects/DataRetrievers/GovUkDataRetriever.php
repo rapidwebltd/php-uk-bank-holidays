@@ -11,7 +11,6 @@ class GovUkDataRetriever
 
   private $cache = null;
   private $cacheKey = 'GovUkBankHolidays';
-  private $cacheExpiry = '+1 month';
 
   private function setupCache()
   {
@@ -40,7 +39,7 @@ class GovUkDataRetriever
             throw new Exception('Unable to decode JSON data.');
         }
 
-        $this->cache->set($this->cacheKey, $data, strtotime($this->cacheExpiry));
+        $this->cache->set($this->cacheKey, $data);
 
     }
 
