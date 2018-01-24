@@ -11,7 +11,7 @@
       ],
     "require": {
         "php": ">=5.3",
-        "rapidwebltd/rw-file-cache": "^1.0"
+        "rapidwebltd/rw-file-cache": "^1.2.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7"
