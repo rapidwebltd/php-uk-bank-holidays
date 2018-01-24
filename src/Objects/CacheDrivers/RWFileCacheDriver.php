@@ -14,7 +14,7 @@ class RWFileCacheDriver implements CacheDriverInterface {
         $this->cache = new RWFileCache();
         $this->cache->changeConfig(
             array(
-                "cacheDirectory" => __DIR__."/../../../cache/",
+                "cacheDirectory" => "/tmp/php-uk-bank-holidays-cache/",
                 "gzipCompression" => true
                 )
             );
