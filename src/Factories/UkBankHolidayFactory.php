@@ -13,31 +13,14 @@ abstract class UkBankHolidayFactory
      self::$dataRetriver  = new GovUkDataRetriever();
     }
 
-    public static function getAll($location = "england-wales")
+    public static function getAll($location = 'england-and-wales')
     {
         self::setUpDataRetriever();
-        switch($location)
-        {
-            case"england-wales":
-                $dates = self::$dataRetriver->retrieveEnglandAndWales();
-            break;
-
-            case"scotland":
-                $dates = self::$dataRetriver->retrieveScotland();
-            break;
-
-            case"northern-ireland":
-                $dates = self::$dataRetriver->retrieveNorthernIreland();
-            break;
-
-            default:
-            throw new exception("Specified Location is invalid");
-            break;
-        }
+        $dates = self::$dataRetriver->retrieve($location);
         return $dates;
 
     }
-    public static function getByMonth($year,$month,$location = "england-wales")
+    public static function getByMonth($year,$month,$location = 'england-and-wales')
     {
         $dates = self::getAll($location);
         $dateRange = array();
@@ -48,7 +31,7 @@ abstract class UkBankHolidayFactory
         }
         return $dateRange;
     }
-    public static function getByDate($year,$month,$day,$location = "england-wales")
+    public static function getByDate($year,$month,$day,$location = 'england-and-wales')
     {
       $dates = self::getByMonth($year,$month,$location);
       $dateRange = array();

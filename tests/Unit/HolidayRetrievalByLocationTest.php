@@ -18,7 +18,7 @@ final class HolidayRetrievalByLocationTest extends TestCase
 
     public function testEnglandWales()
     {
-        $this->checkHolidaysArrayFormat(UkBankHolidayFactory::getAll('england-wales'));
+        $this->checkHolidaysArrayFormat(UkBankHolidayFactory::getAll('england-and-wales'));
     }
 
     public function testScotland()

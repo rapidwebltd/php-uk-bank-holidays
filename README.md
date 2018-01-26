@@ -55,7 +55,7 @@ If you wish to retrieve bank holidays from Scotland or Northern Ireland, make us
 argument, as follows.
 
 ```php
-$englandWalesHolidays = UkBankHolidayFactory::getByDate(2017, 01, 2, 'england-wales');
+$englandWalesHolidays = UkBankHolidayFactory::getByDate(2017, 01, 2, 'england-and-wales');
 $scotlandHolidays = UkBankHolidayFactory::getByDate(2017, 01, 2, 'scotland');
 $northernIrelandHolidays = UkBankHolidayFactory::getByDate(2017, 01, 2, 'northern-ireland');
 

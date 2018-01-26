@@ -11,6 +11,7 @@ class GovUkDataRetriever
 
   private $cache = null;
   private $cacheKey = 'GovUkBankHolidays';
+  private $acceptableLocations = ['england-and-wales', 'scotland', 'northern-ireland'];
 
   private function setupCache()
   {
@@ -21,8 +22,12 @@ class GovUkDataRetriever
     }
   }
 
-  private function retrieve($location)
+  public function retrieve($location)
   {
+    if (!in_array($location, $this->acceptableLocations)) {
+        throw new Exception('Invalid location specified. Acceptable locations: '.implode(', ', $this->acceptableLocations));
+    }
+
     $this->setupCache();
       
     if (!($data = $this->cache->get($this->cacheKey))) {
@@ -55,21 +60,6 @@ class GovUkDataRetriever
     }
 
     return $bankHolidayDates;
-  }
-
-  public function retrieveEnglandAndWales()
-  {
-      return $this->retrieve("england-and-wales");
-  }
-
-  public function retrieveScotland()
-  {
-      return $this->retrieve("scotland");
-  }
-
-  public function retrieveNorthernIreland()
-  {
-      return $this->retrieve("northern-ireland");
   }
 
 }
