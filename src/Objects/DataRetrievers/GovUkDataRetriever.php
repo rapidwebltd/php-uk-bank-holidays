@@ -5,6 +5,7 @@ use RapidWeb\UkBankHolidays\Objects\UkBankHoliday;
 use RapidWeb\UkBankHolidays\Objects\CacheDrivers\RWFileCacheDriver;
 use RapidWeb\UkBankHolidays\Objects\CacheDrivers\LaravelCacheDriver;
 use Exception;
+use RapidWeb\UkBankHolidays\Exceptions\InvalidLocationException;
 
 class GovUkDataRetriever
 {
@@ -25,7 +26,7 @@ class GovUkDataRetriever
   public function retrieve($location)
   {
     if (!in_array($location, $this->acceptableLocations)) {
-        throw new Exception('Invalid location specified. Acceptable locations: '.implode(', ', $this->acceptableLocations));
+        throw new InvalidLocationException('Invalid location specified. Acceptable locations: '.implode(', ', $this->acceptableLocations));
     }
 
     $this->setupCache();
