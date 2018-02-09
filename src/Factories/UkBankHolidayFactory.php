@@ -3,6 +3,7 @@ namespace RapidWeb\UkBankHolidays\Factories;
 
 use exception;
 use RapidWeb\UkBankHolidays\Objects\DataRetrievers\GovUkDataRetriever;
+use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 
 abstract class UkBankHolidayFactory
 {

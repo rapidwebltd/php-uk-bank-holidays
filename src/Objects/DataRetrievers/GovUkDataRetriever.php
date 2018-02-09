@@ -6,21 +6,33 @@ use RapidWeb\UkBankHolidays\Objects\CacheDrivers\RWFileCacheDriver;
 use RapidWeb\UkBankHolidays\Objects\CacheDrivers\LaravelCacheDriver;
 use Exception;
 use RapidWeb\UkBankHolidays\Exceptions\InvalidLocationException;
+use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
+use RapidWeb\UkBankHolidays\Interfaces\DataRetrieverInterface;
 
-class GovUkDataRetriever
+class GovUkDataRetriever implements DataRetrieverInterface
 {
 
   private $cache = null;
   private $cacheKey = 'GovUkBankHolidays';
   private $acceptableLocations = ['england-and-wales', 'scotland', 'northern-ireland'];
 
+  public function __construct()
+  {
+    $this->setupCache();
+  }
+
   private function setupCache()
   {
     if (class_exists('Illuminate\Support\Facades\Cache')) {
-        $this->cache = new LaravelCacheDriver;
+      $this->setCacheDriver(new LaravelCacheDriver);
     } else {
-      $this->cache = new RWFileCacheDriver;
+      $this->setCacheDriver(new RWFileCacheDriver);
     }
+  }
+
+  public function setCacheDriver(CacheDriverInterface $cache)
+  {
+    $this->cache = $cache;
   }
 
   public function retrieve($location)
@@ -28,8 +40,6 @@ class GovUkDataRetriever
     if (!in_array($location, $this->acceptableLocations)) {
         throw new InvalidLocationException('Invalid location specified. Acceptable locations: '.implode(', ', $this->acceptableLocations));
     }
-
-    $this->setupCache();
       
     if (!($data = $this->cache->get($this->cacheKey))) {
 
