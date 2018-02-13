@@ -2,21 +2,21 @@
 
 namespace RapidWeb\UkBankHolidays\Objects\CacheDrivers;
 
-use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 use rapidweb\RWFileCache\RWFileCache;
+use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 
-class RWFileCacheDriver implements CacheDriverInterface {
-
+class RWFileCacheDriver implements CacheDriverInterface
+{
     private $cache = null;
 
     public function __construct()
     {
         $this->cache = new RWFileCache();
         $this->cache->changeConfig(
-            array(
-                "cacheDirectory" => "/tmp/php-uk-bank-holidays-cache/",
-                "gzipCompression" => true
-                )
+            [
+                'cacheDirectory'  => '/tmp/php-uk-bank-holidays-cache/',
+                'gzipCompression' => true,
+                ]
             );
     }
 
@@ -29,5 +29,4 @@ class RWFileCacheDriver implements CacheDriverInterface {
     {
         return $this->cache->get($key);
     }
-
 }

@@ -1,7 +1,6 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-
 use RapidWeb\UkBankHolidays\Factories\UkBankHolidayFactory;
 
 final class BasicUsageTest extends TestCase
@@ -20,7 +19,5 @@ final class BasicUsageTest extends TestCase
         $this->assertEquals('New Year’s Day', $holiday->title);
         $this->assertEquals('2017-01-02', $holiday->date);
         $this->assertEquals('Substitute day', $holiday->notes);
-
     }
-
 }
