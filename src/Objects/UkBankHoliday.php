@@ -1,4 +1,5 @@
 <?php
+
 namespace RapidWeb\UkBankHolidays\Objects;
 
 class UkBankHoliday
@@ -7,11 +8,10 @@ class UkBankHoliday
     public $date;
     public $notes;
 
-    public function __construct($title,$date,$notes)
+    public function __construct($title, $date, $notes)
     {
-     $this->title = $title;
-     $this->date = $date;
-     $this->notes = $notes;
+        $this->title = $title;
+        $this->date = $date;
+        $this->notes = $notes;
     }
 }
-?>

@@ -1,9 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-
-use RapidWeb\UkBankHolidays\Factories\UkBankHolidayFactory;
 use RapidWeb\UkBankHolidays\Exceptions\InvalidLocationException;
+use RapidWeb\UkBankHolidays\Factories\UkBankHolidayFactory;
 
 final class HolidayRetrievalByLocationTest extends TestCase
 {
@@ -25,7 +24,6 @@ final class HolidayRetrievalByLocationTest extends TestCase
     public function testScotland()
     {
         $this->checkHolidaysArrayFormat(UkBankHolidayFactory::getAll('scotland'));
-
     }
 
     public function testNorthernIreland()
@@ -38,5 +36,4 @@ final class HolidayRetrievalByLocationTest extends TestCase
         $this->expectException(InvalidLocationException::class);
         $this->checkHolidaysArrayFormat(UkBankHolidayFactory::getAll('rensid-flapsop'));
     }
-
 }
