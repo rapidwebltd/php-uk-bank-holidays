@@ -1,7 +1,6 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-
 use RapidWeb\UkBankHolidays\Factories\UkBankHolidayFactory;
 
 final class LaravelCacheDriverTest extends TestCase
@@ -21,5 +20,4 @@ final class LaravelCacheDriverTest extends TestCase
         require_once __DIR__.'/includes/MockLaravelCache.php';
         $this->checkHolidaysArrayFormat(UkBankHolidayFactory::getAll('england-and-wales'));
     }
-
 }
