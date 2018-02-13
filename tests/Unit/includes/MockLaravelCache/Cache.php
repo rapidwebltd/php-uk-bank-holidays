@@ -2,7 +2,7 @@
 
 namespace Illuminate\Support\Facades;
 
-abstract class MockLaravelCache
+abstract class Cache
 {
     public static function put($key, $value, $expiry)
     {

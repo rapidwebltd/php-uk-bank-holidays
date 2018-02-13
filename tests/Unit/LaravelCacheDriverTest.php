@@ -17,7 +17,7 @@ final class LaravelCacheDriverTest extends TestCase
 
     public function testEnglandWales()
     {
-        require_once __DIR__.'/includes/MockLaravelCache.php';
+        require_once __DIR__.'/includes/MockLaravelCache/Cache.php';
         $this->checkHolidaysArrayFormat(UkBankHolidayFactory::getAll('england-and-wales'));
     }
 }

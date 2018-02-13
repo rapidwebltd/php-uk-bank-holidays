@@ -16,6 +16,11 @@ class GovUkDataRetriever implements DataRetrieverInterface
     private $cacheKey = 'GovUkBankHolidays';
     private $acceptableLocations = ['england-and-wales', 'scotland', 'northern-ireland'];
 
+    public function __construct()
+    {
+        $this->setupCache();
+    }
+
     private function setupCache()
     {
         if (class_exists('Illuminate\Support\Facades\Cache')) {
@@ -35,8 +40,6 @@ class GovUkDataRetriever implements DataRetrieverInterface
         if (!in_array($location, $this->acceptableLocations)) {
             throw new InvalidLocationException('Invalid location specified. Acceptable locations: '.implode(', ', $this->acceptableLocations));
         }
-
-        $this->setupCache();
 
         if (!($data = $this->cache->get($this->cacheKey))) {
             $retrievedData = file_get_contents('https://www.gov.uk/bank-holidays.json');
