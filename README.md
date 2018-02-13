@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/rapidwebltd/php-uk-bank-holidays.svg?branch=master)](https://travis-ci.org/rapidwebltd/php-uk-bank-holidays)
 [![Coverage Status](https://coveralls.io/repos/github/rapidwebltd/php-uk-bank-holidays/badge.svg?branch=master)](https://coveralls.io/github/rapidwebltd/php-uk-bank-holidays?branch=master)
+[![StyleCI](https://styleci.io/repos/84812494/shield?branch=master)](https://styleci.io/repos/84812494)
 
 This library lets developers easily retrieve UK bank holiday details. Holidays can be retrieved for 
 England & Wales, Scotland, and Northern Ireland. Information about these holidays can optionally be
