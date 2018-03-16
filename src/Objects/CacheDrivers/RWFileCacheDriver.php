@@ -2,13 +2,12 @@
 
 namespace RapidWeb\UkBankHolidays\Objects\CacheDrivers;
 
-use rapidweb\RWFileCache\RWFileCache;
-use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 use rapidweb\RWFileCachePSR6\CacheItemPool;
+use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 
 class RWFileCacheDriver implements CacheDriverInterface
 {
-    const CACHE_EXPIRY_IN_SECONDS = 60*60*24*30; // 30 days
+    const CACHE_EXPIRY_IN_SECONDS = 60 * 60 * 24 * 30; // 30 days
 
     private $cache = null;
 
