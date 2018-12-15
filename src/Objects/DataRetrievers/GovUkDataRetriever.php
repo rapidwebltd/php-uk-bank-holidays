@@ -7,7 +7,7 @@ use RapidWeb\UkBankHolidays\Exceptions\InvalidLocationException;
 use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 use RapidWeb\UkBankHolidays\Interfaces\DataRetrieverInterface;
 use RapidWeb\UkBankHolidays\Objects\CacheDrivers\LaravelCacheDriver;
-use RapidWeb\UkBankHolidays\Objects\CacheDrivers\RWFileCacheDriver;
+use RapidWeb\UkBankHolidays\Objects\CacheDrivers\DOFileCacheDriver;
 use RapidWeb\UkBankHolidays\Objects\UkBankHoliday;
 
 class GovUkDataRetriever implements DataRetrieverInterface
@@ -26,7 +26,7 @@ class GovUkDataRetriever implements DataRetrieverInterface
         if (class_exists('Illuminate\Support\Facades\Cache')) {
             $this->setCacheDriver(new LaravelCacheDriver());
         } else {
-            $this->setCacheDriver(new RWFileCacheDriver());
+            $this->setCacheDriver(new DOFileCacheDriver());
         }
     }
 

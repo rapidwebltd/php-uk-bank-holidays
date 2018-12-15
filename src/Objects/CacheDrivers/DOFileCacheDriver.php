@@ -2,12 +2,12 @@
 
 namespace RapidWeb\UkBankHolidays\Objects\CacheDrivers;
 
-use rapidweb\RWFileCachePSR6\CacheItemPool;
+use DivineOmega\DOFileCachePSR6\CacheItemPool;
 use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 
-class RWFileCacheDriver implements CacheDriverInterface
+class DOFileCacheDriver implements CacheDriverInterface
 {
-    const CACHE_EXPIRY_IN_SECONDS = 60 * 60 * 24 * 30; // 30 days
+    const CACHE_EXPIRY_IN_SECONDS = 2592000; // 30 days
 
     private $cache = null;
 
@@ -15,10 +15,10 @@ class RWFileCacheDriver implements CacheDriverInterface
     {
         $this->cache = new CacheItemPool();
         $this->cache->changeConfig(
-            [
+            array(
                 'cacheDirectory'  => '/tmp/php-uk-bank-holidays-cache/',
                 'gzipCompression' => true,
-                ]
+                )
             );
     }
 
