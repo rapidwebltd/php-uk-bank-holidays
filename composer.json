@@ -10,7 +10,7 @@
         "PHP uk bank holidays library"
       ],
     "require": {
-        "php": ">=5.3",
+        "php": ">=5.6",
         "divineomega/do-file-cache-psr-6": "^2.0"
     },
     "require-dev": {
