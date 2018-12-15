@@ -15,10 +15,10 @@ class DOFileCacheDriver implements CacheDriverInterface
     {
         $this->cache = new CacheItemPool();
         $this->cache->changeConfig(
-            array(
+            [
                 'cacheDirectory'  => '/tmp/php-uk-bank-holidays-cache/',
                 'gzipCompression' => true,
-                )
+                ]
             );
     }
 

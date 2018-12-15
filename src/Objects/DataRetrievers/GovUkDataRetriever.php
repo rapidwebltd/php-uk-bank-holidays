@@ -6,8 +6,8 @@ use Exception;
 use RapidWeb\UkBankHolidays\Exceptions\InvalidLocationException;
 use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 use RapidWeb\UkBankHolidays\Interfaces\DataRetrieverInterface;
-use RapidWeb\UkBankHolidays\Objects\CacheDrivers\LaravelCacheDriver;
 use RapidWeb\UkBankHolidays\Objects\CacheDrivers\DOFileCacheDriver;
+use RapidWeb\UkBankHolidays\Objects\CacheDrivers\LaravelCacheDriver;
 use RapidWeb\UkBankHolidays\Objects\UkBankHoliday;
 
 class GovUkDataRetriever implements DataRetrieverInterface
