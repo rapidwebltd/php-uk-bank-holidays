@@ -64,8 +64,9 @@ class GovUkDataRetriever implements DataRetrieverInterface
         $bankHolidayDates = [];
 
         foreach ($data[$location]['events'] as $holidayDate) {
+            list($year, $month, $day) = explode('-', $holidayDate['date']);
             $bankHolidayDate = new UkBankHoliday($holidayDate['title'], $holidayDate['date'], $holidayDate['notes']);
-            $bankHolidayDates[] = $bankHolidayDate;
+            $bankHolidayDates[$year][$month][$day][] = $bankHolidayDate;
         }
 
         return $bankHolidayDates;
