@@ -7,7 +7,7 @@ final class BasicUsageTest extends TestCase
 {
     public function testGetNewYearsDay()
     {
-        $holidays = UkBankHolidayFactory::getByDate(2017, 01, 2);
+        $holidays = UkBankHolidayFactory::getByDate('2017', '01', '02');
 
         $this->assertTrue(is_array($holidays), 'Holidays should be an array.');
         $this->assertEquals(1, count($holidays), 'Holidays array should have 1 value.');
