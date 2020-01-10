@@ -18,7 +18,7 @@ class DOFileCacheDriver implements CacheDriverInterface
             [
                 'cacheDirectory'  => '/tmp/php-uk-bank-holidays-cache/',
                 'gzipCompression' => true,
-                ]
+            ]
             );
     }
 
