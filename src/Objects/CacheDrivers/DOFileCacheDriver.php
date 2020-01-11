@@ -18,7 +18,7 @@ class DOFileCacheDriver implements CacheDriverInterface
             [
                 'cacheDirectory'  => '/tmp/php-uk-bank-holidays-cache/',
                 'gzipCompression' => true,
-                ]
+            ]
             );
     }
 
@@ -27,6 +27,7 @@ class DOFileCacheDriver implements CacheDriverInterface
         $cacheItem = $this->cache->getItem($key);
         $cacheItem->set($value);
         $cacheItem->expiresAfter(self::CACHE_EXPIRY_IN_SECONDS);
+        $this->cache->save($cacheItem);
     }
 
     public function get($key)
