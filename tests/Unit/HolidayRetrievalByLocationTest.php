@@ -17,7 +17,7 @@ final class HolidayRetrievalByLocationTest extends TestCase
         $days = end($months);
         $this->assertTrue(is_array($days));
         $day = end($days);
-        
+
         $this->assertEquals('RapidWeb\UkBankHolidays\Objects\UkBankHoliday', get_class($day));
     }
 
