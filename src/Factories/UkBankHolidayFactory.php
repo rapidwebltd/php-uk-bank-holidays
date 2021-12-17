@@ -7,6 +7,7 @@ use RapidWeb\UkBankHolidays\Objects\DataRetrievers\GovUkDataRetriever;
 abstract class UkBankHolidayFactory
 {
     private static $dataRetriver;
+    private static $dates = [];
 
     private static function setUpDataRetriever()
     {
@@ -15,35 +16,32 @@ abstract class UkBankHolidayFactory
 
     public static function getAll($location = 'england-and-wales')
     {
+        if (empty(self::$dates[$location]) === false) {
+            return self::$dates[$location];
+        }
         self::setUpDataRetriever();
-        $dates = self::$dataRetriver->retrieve($location);
+        self::$dates[$location] = self::$dataRetriver->retrieve($location);
 
-        return $dates;
+        return self::$dates[$location];
     }
 
     public static function getByMonth($year, $month, $location = 'england-and-wales')
     {
         $dates = self::getAll($location);
-        $dateRange = [];
-        foreach ($dates as $date) {
-            if (date('Y', strtotime($date->date)) == $year && date('m', strtotime($date->date)) == $month) {
-                $dateRange[] = $date;
-            }
+        if (!isset($dates[$year][$month])) {
+            return [];
         }
 
-        return $dateRange;
+        return $dates[$year][$month];
     }
 
     public static function getByDate($year, $month, $day, $location = 'england-and-wales')
     {
         $dates = self::getByMonth($year, $month, $location);
-        $dateRange = [];
-        foreach ($dates as $date) {
-            if (date('d', strtotime($date->date)) == $day) {
-                $dateRange[] = $date;
-            }
+        if (!isset($dates[$day])) {
+            return [];
         }
 
-        return $dateRange;
+        return $dates[$day];
     }
 }
