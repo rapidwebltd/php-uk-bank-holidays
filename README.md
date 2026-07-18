@@ -1,7 +1,6 @@
 # PHP UK Bank Holidays
 
-[![Build Status](https://travis-ci.org/rapidwebltd/php-uk-bank-holidays.svg?branch=master)](https://travis-ci.org/rapidwebltd/php-uk-bank-holidays)
-[![Coverage Status](https://coveralls.io/repos/github/rapidwebltd/php-uk-bank-holidays/badge.svg?branch=master)](https://coveralls.io/github/rapidwebltd/php-uk-bank-holidays?branch=master)
+[![Tests](https://github.com/rapidwebltd/php-uk-bank-holidays/actions/workflows/tests.yml/badge.svg)](https://github.com/rapidwebltd/php-uk-bank-holidays/actions/workflows/tests.yml)
 [![Packagist](https://img.shields.io/packagist/dt/rapidwebltd/php-uk-bank-holidays.svg)](https://packagist.org/packages/rapidwebltd/php-uk-bank-holidays/stats)
 
 This library lets developers easily retrieve UK bank holiday details. Holidays can be retrieved for 
@@ -63,6 +62,21 @@ $northernIrelandHolidays = UkBankHolidayFactory::getByDate(2017, 01, 2, 'norther
 
 $allHolidays = array_merge($englandWalesHolidays, $scotlandHolidays, $northernIrelandHolidays);
 ```
+
+### Custom cache driver
+
+The default cache driver is selected automatically. You can provide any implementation of `CacheDriverInterface` before retrieving holidays:
+
+```php
+use RapidWeb\UkBankHolidays\Factories\UkBankHolidayFactory;
+use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
+
+// $yourCacheDriver must implement CacheDriverInterface.
+UkBankHolidayFactory::setCacheDriver($yourCacheDriver);
+$holidays = UkBankHolidayFactory::getAll();
+```
+
+Pass `null` to `setCacheDriver()` to restore automatic cache selection.
 
 ### Date-based restrictions
 

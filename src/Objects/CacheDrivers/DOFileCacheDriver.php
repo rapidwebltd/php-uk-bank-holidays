@@ -2,7 +2,6 @@
 
 namespace RapidWeb\UkBankHolidays\Objects\CacheDrivers;
 
-use DivineOmega\DOFileCachePSR6\CacheItemPool;
 use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 
 class DOFileCacheDriver implements CacheDriverInterface
@@ -13,7 +12,11 @@ class DOFileCacheDriver implements CacheDriverInterface
 
     public function __construct()
     {
-        $this->cache = new CacheItemPool();
+        $cacheItemPoolClass = class_exists('JordJD\DOFileCachePSR6\CacheItemPool')
+            ? 'JordJD\DOFileCachePSR6\CacheItemPool'
+            : 'DivineOmega\DOFileCachePSR6\CacheItemPool';
+
+        $this->cache = new $cacheItemPoolClass();
         $this->cache->changeConfig(
             [
                 'cacheDirectory'  => '/tmp/php-uk-bank-holidays-cache/',
