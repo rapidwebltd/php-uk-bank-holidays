@@ -2,15 +2,22 @@
 
 namespace RapidWeb\UkBankHolidays\Factories;
 
+use RapidWeb\UkBankHolidays\Interfaces\CacheDriverInterface;
 use RapidWeb\UkBankHolidays\Objects\DataRetrievers\GovUkDataRetriever;
 
 abstract class UkBankHolidayFactory
 {
     private static $dataRetriver;
+    private static $cacheDriver;
 
     private static function setUpDataRetriever()
     {
-        self::$dataRetriver = new GovUkDataRetriever();
+        self::$dataRetriver = new GovUkDataRetriever(self::$cacheDriver);
+    }
+
+    public static function setCacheDriver(CacheDriverInterface $cacheDriver = null)
+    {
+        self::$cacheDriver = $cacheDriver;
     }
 
     public static function getAll($location = 'england-and-wales')
